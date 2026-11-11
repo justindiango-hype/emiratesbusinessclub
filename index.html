@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Emirates Business Club | The private network for the world's founders</title>
+  <meta name="description" content="Emirates Business Club is a private social network for business owners and founders. Build your profile, meet people across borders, and join for free.">
+  <meta name="theme-color" content="#0a0908">
+  <meta name="color-scheme" content="dark">
+  <meta property="og:title" content="Emirates Business Club">
+  <meta property="og:description" content="The private network for the world's founders. Free to join.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="preload" href="assets/fonts/playfair-display-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-serif-4-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img class="loader__logo" src="assets/img/wordmark.png" alt="" width="1189" height="361">
+      <div class="loader__bar"><span id="loaderBar"></span></div>
+      <p class="loader__label mono">Gathering the network</p>
+    </div>
+  </div>
+
+  <!-- The particle scene sits behind everything -->
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="nav" id="nav">
+    <a class="nav__logo" href="#top" aria-label="Emirates Business Club, back to top">
+      <img src="assets/img/wordmark.png" alt="Emirates Business Club" width="1189" height="361">
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#benefits" data-i18n="nav.benefits">Benefits</a>
+      <a href="#president" data-i18n="nav.president">President</a>
+      <a href="#membership" data-i18n="nav.membership">Membership</a>
+      <a href="#moments" data-i18n="nav.moments">Moments</a>
+    </nav>
+    <button class="btn btn--sm" type="button" data-open-join data-i18n="cta.join">Join for free</button>
+  </header>
+
+  <!-- Chapter read-out, in the spirit of an instrument panel -->
+  <aside class="hud" id="hud" aria-hidden="true">
+    <div class="hud__label mono" id="hudLabel">The world's founders</div>
+    <div class="hud__rail"><span id="hudRail"></span></div>
+    <div class="hud__read mono" id="hudRead">
+      <span id="hudCoord">00.0000° N · 00.0000° E</span>
+      <span id="hudStat">Membership · Free to join</span>
+    </div>
+  </aside>
+
+  <main id="top">
+
+    <!-- ============ STORY (the particles change shape as you scroll) ============ -->
+    <section class="story" id="story" aria-label="Introduction">
+
+      <div class="chapter chapter--hero" data-stage="0" data-label="The world's founders" data-coord="Earth · 195 countries" data-stat="Membership · Free to join">
+        <div class="chapter__copy">
+          <p class="eyebrow mono reveal" data-i18n="hero.eyebrow">Free to join · App launching soon</p>
+          <h1 class="display split" data-i18n="hero.title">Your private network for the world's <em>founders.</em></h1>
+          <p class="lede reveal" data-i18n="hero.lede">Emirates Business Club is a private social network for business owners and founders. Build your profile, meet people across borders, and start the conversations that move your business forward.</p>
+          <div class="hero__actions reveal">
+            <button class="btn" type="button" data-open-join data-i18n="cta.join">Join for free</button>
+            <a class="link" href="#membership" data-i18n="hero.secondary">See membership</a>
+          </div>
+        </div>
+        <div class="scroll-hint mono reveal" aria-hidden="true"><span></span>Scroll</div>
+      </div>
+
+      <div class="chapter chapter--right" data-stage="1" data-label="All roads" data-coord="25.2048° N · 55.2708° E" data-stat="Destination · Dubai">
+        <div class="chapter__copy">
+          <p class="eyebrow mono">Connection</p>
+          <h2 class="display display--md split" data-i18n="c2.title">From every continent, <em>one meeting point.</em></h2>
+          <p class="lede" data-i18n="c2.lede">Founders build alone in thousands of cities. The club gives them one place to find each other, wherever they started.</p>
+        </div>
+      </div>
+
+      <div class="chapter chapter--top" data-stage="2" data-label="The home of the club" data-coord="Business Bay · Dubai" data-stat="Anchored in Dubai">
+        <div class="chapter__copy">
+          <p class="eyebrow mono">Home</p>
+          <h2 class="display display--md split" data-i18n="c3.title">Anchored in Dubai. <em>Open to the world.</em></h2>
+          <p class="lede" data-i18n="c3.lede">A curated community with its home in the Emirates and its members everywhere.</p>
+        </div>
+      </div>
+
+      <div class="chapter chapter--left" data-stage="3" data-label="The members" data-coord="Founders · Worldwide" data-stat="Direct access">
+        <div class="chapter__copy">
+          <p class="eyebrow mono">Network</p>
+          <h2 class="display display--md split" data-i18n="c4.title">The people you need are <em>one message away.</em></h2>
+          <p class="lede" data-i18n="c4.lede">Reach founders and decision-makers directly. No gatekeepers, no cold introductions.</p>
+        </div>
+      </div>
+
+      <div class="chapter chapter--bottom" data-stage="4" data-label="Emirates Business Club" data-coord="Est. Dubai" data-stat="Founding 100 · 50% off for life">
+        <div class="chapter__copy chapter__copy--center">
+          <h2 class="sr-only">Emirates Business Club</h2>
+          <p class="lede lede--lg" data-i18n="c5.lede">Free to join. Upgrade only when you want more.</p>
+          <button class="btn" type="button" data-open-join data-i18n="cta.join">Join for free</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MANIFESTO ============ -->
+    <section class="manifesto" data-stage-end>
+      <p class="eyebrow mono">The club</p>
+      <p class="manifesto__text" id="manifesto" data-i18n="manifesto">A private club for founders. Anchored in Dubai, open to the world.</p>
+    </section>
+
+    <!-- ============ BENEFITS (horizontal on desktop) ============ -->
+    <section class="benefits" id="benefits">
+      <div class="benefits__pin">
+        <header class="benefits__head">
+          <p class="eyebrow mono">Why join</p>
+          <h2 class="display display--md">Built for people who <em>build.</em></h2>
+        </header>
+        <div class="benefits__stack" id="benefitsStack">
+          <article class="card">
+            <div class="card__photo"><img src="assets/img/moment-09.webp" alt="Three members talking beside a window" loading="lazy" decoding="async" width="1100" height="700"></div>
+            <div class="card__body">
+              <h3>A global network in your pocket</h3>
+              <p>Meet founders and business owners from around the world. Start a conversation in a couple of taps.</p>
+              <span class="tag mono">Included free</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__photo"><img src="assets/img/moment-02.webp" alt="Two members shaking hands" loading="lazy" decoding="async" width="1100" height="700"></div>
+            <div class="card__body">
+              <h3>Message founders directly</h3>
+              <p>Reach principal founders and decision-makers without the gatekeepers.</p>
+              <span class="tag tag--gold mono">Paid tiers</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__photo"><img src="assets/img/moment-10.webp" alt="Members sharing a drink after a session" loading="lazy" decoding="async" width="1100" height="700"></div>
+            <div class="card__body">
+              <h3>Member discounts</h3>
+              <p>Unlock member-only pricing and privileges as you upgrade.</p>
+              <span class="tag tag--gold mono">Paid tiers</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__photo"><img src="assets/img/moment-05.webp" alt="A speaker addressing a seated audience" loading="lazy" decoding="async" width="1100" height="700"></div>
+            <div class="card__body">
+              <h3>Early entry to EBC events</h3>
+              <p>Be first through the door. Paid members get early entry whenever the club opens a room.</p>
+              <span class="tag tag--gold mono">Paid tiers</span>
+            </div>
+          </article>
+          <article class="card">
+            <div class="card__photo"><img src="assets/img/moment-01.webp" alt="Members talking around a table" loading="lazy" decoding="async" width="1100" height="700"></div>
+            <div class="card__body">
+              <h3>Upgrade any time</h3>
+              <p>Start free and stay free for as long as you like. Move up a tier in the app the moment you want more.</p>
+              <span class="tag mono">Your call</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PRESIDENT ============ -->
+    <section class="president" id="president">
+      <p class="president__ghost" aria-hidden="true" id="presidentGhost">Kinga J Szabo</p>
+      <div class="president__grid">
+        <div class="president__media">
+          <div class="president__glow" aria-hidden="true"></div>
+          <div class="president__frame" id="presidentFrame">
+            <span class="president__shine" aria-hidden="true"></span>
+            <picture>
+              <source media="(max-width: 700px)" srcset="assets/img/president-sm.webp">
+              <img src="assets/img/president.webp" alt="Kinga J Szabo, President and Founder of Emirates Business Club" width="1122" height="1400" loading="lazy" decoding="async">
+            </picture>
+          </div>
+        </div>
+        <div class="president__copy">
+          <p class="eyebrow mono">President and Founder</p>
+          <blockquote class="president__quote">
+            <span class="president__mark" aria-hidden="true">&ldquo;</span>
+            <p id="presidentQuote">I was not built to give up.</p>
+          </blockquote>
+          <div class="president__sign">
+            <span class="president__rule" aria-hidden="true"></span>
+            <div>
+              <h2 class="president__name">Kinga J Szabo</h2>
+              <p class="mono president__role">President and Founder, Emirates Business Club</p>
+            </div>
+          </div>
+          <dl class="president__stats">
+            <div><dt>14+</dt><dd>years of executive leadership in the UAE</dd></div>
+            <div><dt>Oxford</dt><dd>graduate</dd></div>
+          </dl>
+          <p class="lede">Kinga J Szabo stands at the intersection of strategic growth, private advisory and high-level business connections across the GCC and internationally.</p>
+          <p class="lede">Her vision for the club is built on discretion, exclusivity and meaningful support, guiding industry leaders, business owners and founders as they expand across regional and global markets.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEMBERSHIP ============ -->
+    <section class="membership" id="membership">
+      <div class="membership__top">
+      <header class="section-head">
+        <p class="eyebrow mono">Membership</p>
+        <h2 class="display display--md">Free to join. <em>Upgrade when you're ready.</em></h2>
+        <p class="lede">Start with a free membership, then unlock more in the app whenever you choose.</p>
+      </header>
+
+      <div class="compare" id="compare" role="table" aria-label="Free and paid membership compared">
+        <div class="compare__glow" aria-hidden="true"><span class="compare__sheen"></span></div>
+        <div class="compare__row compare__row--head" role="row">
+          <span class="compare__label" role="columnheader"><span class="sr-only">What you get</span></span>
+          <span class="compare__cell" role="columnheader">
+            <span class="mono compare__kicker">Member</span>
+            <span class="compare__price">Free</span>
+          </span>
+          <span class="compare__cell compare__cell--paid" role="columnheader">
+            <span class="mono compare__kicker">Paid tiers</span>
+            <span class="compare__price compare__price--soon">Names and pricing announced soon</span>
+          </span>
+        </div>
+            <div class="compare__row" role="row">
+              <span class="compare__label" role="rowheader">Your profile and the member directory</span>
+              <span class="compare__cell" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+            </div>
+            <div class="compare__row" role="row">
+              <span class="compare__label" role="rowheader">Connect with founders around the world</span>
+              <span class="compare__cell" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+            </div>
+            <div class="compare__row" role="row">
+              <span class="compare__label" role="rowheader">Upgrade any time in the app</span>
+              <span class="compare__cell" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+            </div>
+            <div class="compare__row" role="row">
+              <span class="compare__label" role="rowheader">Message founders directly</span>
+              <span class="compare__cell" role="cell"><span class="no" aria-hidden="true"></span><span class="sr-only">Not included</span></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+            </div>
+            <div class="compare__row" role="row">
+              <span class="compare__label" role="rowheader">Member discounts</span>
+              <span class="compare__cell" role="cell"><span class="no" aria-hidden="true"></span><span class="sr-only">Not included</span></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+            </div>
+            <div class="compare__row" role="row">
+              <span class="compare__label" role="rowheader">Early entry to EBC events</span>
+              <span class="compare__cell" role="cell"><span class="no" aria-hidden="true"></span><span class="sr-only">Not included</span></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><span class="yes"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">Included</span></span></span>
+            </div>
+            <div class="compare__row compare__row--foot" role="row">
+              <span class="compare__label" role="cell"></span>
+              <span class="compare__cell" role="cell"><button class="btn btn--ghost" type="button" data-open-join>Join for free</button></span>
+              <span class="compare__cell compare__cell--paid" role="cell"><button class="btn" type="button" data-open-join>Join free, upgrade later</button></span>
+            </div>
+      </div>
+      </div>
+
+      <aside class="founding" id="founding">
+        <div class="founding__sheen" aria-hidden="true"></div>
+        <p class="founding__num" aria-hidden="true">50<span>%</span></p>
+        <div class="founding__copy">
+          <p class="eyebrow mono">Founding 100</p>
+          <p class="founding__big">50% off, for life.</p>
+          <p class="lede">The first 100 members to join a paid tier get 50% off the membership fee, for life.</p>
+          <button class="btn" type="button" data-open-join>Claim your place</button>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ============ MOMENTS ============ -->
+    <section class="moments" id="moments">
+      <header class="section-head">
+        <p class="eyebrow mono">Moments</p>
+        <h2 class="display display--md">Moments from <em>the club.</em></h2>
+        <p class="lede">A look at the people, rooms and conversations behind Emirates Business Club.</p>
+      </header>
+      <div class="reel" aria-label="Photos from the club">
+        <div class="reel__row" data-reel="-1">
+          <img src="assets/img/moment-01.webp" alt="Members talking around a table" loading="lazy" decoding="async" width="1100" height="619">
+          <img src="assets/img/moment-05.webp" alt="A speaker addressing a seated audience" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-04.webp" alt="A member smiling during a session" loading="lazy" decoding="async" width="733" height="1100">
+          <img src="assets/img/moment-07.webp" alt="Members in conversation" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-10.webp" alt="Guests meeting at a club gathering" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-12.webp" alt="Members at a club session" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-15.webp" alt="Members talking after a session" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-02.webp" alt="Two members shaking hands" loading="lazy" decoding="async" width="1100" height="679">
+        </div>
+        <div class="reel__row" data-reel="1">
+          <img src="assets/img/moment-03.webp" alt="A member telling a story at a gathering" loading="lazy" decoding="async" width="1100" height="701">
+          <img src="assets/img/moment-06.webp" alt="Members seated at a club session" loading="lazy" decoding="async" width="1100" height="743">
+          <img src="assets/img/moment-08.webp" alt="Members listening to a talk" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-09.webp" alt="A conversation between members" loading="lazy" decoding="async" width="1100" height="705">
+          <img src="assets/img/moment-11.webp" alt="Members networking" loading="lazy" decoding="async" width="1100" height="657">
+          <img src="assets/img/moment-13.webp" alt="A panel conversation" loading="lazy" decoding="async" width="1100" height="733">
+          <img src="assets/img/moment-14.webp" alt="Members in discussion" loading="lazy" decoding="async" width="1100" height="619">
+          <img src="assets/img/moment-16.webp" alt="Members gathered at an event" loading="lazy" decoding="async" width="1100" height="652">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FINAL CTA ============ -->
+    <section class="finale" id="join">
+      <p class="eyebrow mono">Your seat is waiting</p>
+      <h2 class="display">Join free. <em>Take your place.</em></h2>
+      <p class="lede">Create your free membership today. It takes under a minute.</p>
+      <button class="btn btn--lg" type="button" data-open-join>Join for free</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__cols">
+      <nav aria-label="Footer">
+        <p class="mono footer__head">Explore</p>
+        <a href="#benefits">Benefits</a>
+        <a href="#president">President</a>
+        <a href="#membership">Membership</a>
+        <a href="#moments">Moments</a>
+      </nav>
+      <div>
+        <p class="mono footer__head">Contact</p>
+        <a href="https://wa.me/971547775023" target="_blank" rel="noopener">WhatsApp +971 54 777 5023</a>
+        <p>1006 International Business Tower<br>Business Bay, Dubai, UAE</p>
+      </div>
+      <div>
+        <p class="mono footer__head">Legal</p>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <p class="mono">© 2026 Emirates Business Club. All rights reserved.</p>
+      <a class="mono footer__up" href="#top">Back to top</a>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a class="wa" href="https://wa.me/971547775023" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+    <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12.04 2a9.9 9.9 0 0 0-8.5 14.98L2 22l5.17-1.5A9.93 9.93 0 1 0 12.04 2Zm0 1.8a8.12 8.12 0 0 1 6.9 12.4 8.13 8.13 0 0 1-11.1 2.6l-.3-.18-3.06.89.9-2.98-.2-.31A8.12 8.12 0 0 1 12.04 3.8Zm-3.4 4.02c-.18 0-.47.07-.72.34-.25.27-.95.93-.95 2.26 0 1.33.97 2.62 1.1 2.8.14.18 1.88 3 4.64 4.09 2.3.9 2.76.72 3.26.68.5-.05 1.6-.65 1.83-1.29.22-.63.22-1.17.15-1.28-.07-.12-.25-.18-.52-.32-.27-.13-1.6-.79-1.85-.88-.25-.09-.43-.13-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.14-.42-2.17-1.34a8.1 8.1 0 0 1-1.5-1.87c-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.47.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.47-.07-.14-.6-1.48-.84-2.02-.2-.47-.42-.48-.6-.49l-.54-.01Z"/></svg>
+  </a>
+
+  <!-- ============ JOIN QUESTIONNAIRE ============ -->
+  <div class="join" id="joinDialog" role="dialog" aria-modal="true" aria-labelledby="joinTitle" hidden>
+    <div class="join__top">
+      <img src="assets/img/wordmark.png" alt="" width="1189" height="361">
+      <div class="join__progress" aria-hidden="true"><span id="joinBar"></span></div>
+      <button class="join__close" type="button" id="joinClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <form class="join__body" id="joinForm" novalidate>
+      <p class="sr-only" id="joinTitle">Join Emirates Business Club</p>
+
+      <fieldset class="step" data-step="business">
+        <legend>Do you own a business?</legend>
+        <div class="choices">
+          <button type="button" class="choice" data-value="yes"><span class="mono">A</span>Yes, I do</button>
+          <button type="button" class="choice" data-value="no"><span class="mono">B</span>Not yet</button>
+        </div>
+      </fieldset>
+
+      <fieldset class="step" data-step="industry">
+        <legend>What industry are you in?</legend>
+        <div class="chips" id="industryChips"></div>
+      </fieldset>
+
+      <fieldset class="step" data-step="company">
+        <legend>What is your company called?</legend>
+        <input class="field" type="text" name="company" id="fCompany" autocomplete="organization" placeholder="Company name" maxlength="120">
+        <p class="error" role="alert"></p>
+      </fieldset>
+
+      <fieldset class="step" data-step="country">
+        <legend>Where are you from?</legend>
+        <input class="field" type="text" id="fCountry" autocomplete="off" placeholder="Start typing your country" role="combobox" aria-expanded="false" aria-controls="countryList" aria-autocomplete="list">
+        <ul class="options" id="countryList" role="listbox"></ul>
+        <p class="error" role="alert"></p>
+      </fieldset>
+
+      <fieldset class="step" data-step="name">
+        <legend>What is your name?</legend>
+        <input class="field" type="text" name="name" id="fName" autocomplete="name" placeholder="Full name" maxlength="120">
+        <p class="error" role="alert"></p>
+      </fieldset>
+
+      <fieldset class="step" data-step="phone">
+        <legend>And your phone number?</legend>
+        <div class="phone">
+          <label class="sr-only" for="fDial">Country code</label>
+          <select class="field field--dial" id="fDial" autocomplete="tel-country-code"></select>
+          <label class="sr-only" for="fPhone">Phone number</label>
+          <input class="field" type="tel" id="fPhone" inputmode="tel" autocomplete="tel-national" placeholder="Phone number" maxlength="20">
+        </div>
+        <p class="error" role="alert"></p>
+        <p class="fine">By joining you agree to be contacted about your membership and accept the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+      </fieldset>
+
+      <div class="step step--done" data-step="done">
+        <p class="eyebrow mono">Welcome to the club</p>
+        <h3 class="display display--md">You're in<span id="doneName"></span>.</h3>
+        <p class="lede">Download the app to set up your profile and meet the network.</p>
+        <div class="stores">
+          <a class="store" id="storeApple" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16.37 12.6c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.18-1.73-1.35-.14-2.64.8-3.33.8-.7 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.19-1.54 2.67-.39 6.62 1.1 8.79.74 1.06 1.61 2.25 2.75 2.2 1.1-.04 1.52-.71 2.86-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.67-2.14.84-1.23 1.19-2.42 1.2-2.48-.02-.01-2.31-.89-2.34-3.54ZM14.2 6.14c.6-.74 1.01-1.76.9-2.78-.87.04-1.93.58-2.56 1.31-.56.65-1.05 1.69-.92 2.69.97.07 1.97-.5 2.58-1.22Z"/></svg>
+            <span><small>Download on the</small>App Store</span>
+          </a>
+          <a class="store" id="storeGoogle" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3.6 2.3c-.2.2-.3.6-.3 1v17.4c0 .4.1.8.3 1l9.5-9.7-9.5-9.7Zm10.6 10.8 2.7 2.8-10.9 6.2 8.2-9Zm0-2.2-8.2-9 10.9 6.2-2.7 2.8Zm3.9-1.6 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-3-3.1 3-2.3Z"/></svg>
+            <span><small>Get it on</small>Google Play</span>
+          </a>
+        </div>
+        <p class="fine" id="storeNote">The app is launching soon. We will message you the moment it is live.</p>
+      </div>
+    </form>
+
+    <div class="join__nav" id="joinNav">
+      <button class="link" type="button" id="joinBack">Back</button>
+      <button class="btn" type="button" id="joinNext">Continue</button>
+      <span class="mono join__hint">or press Enter</span>
+    </div>
+  </div>
+
+  <script src="vendor/gsap.min.js"></script>
+  <script src="vendor/ScrollTrigger.min.js"></script>
+  <script src="vendor/SplitText.min.js"></script>
+  <script src="vendor/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
